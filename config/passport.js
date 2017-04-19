@@ -1,6 +1,8 @@
+//require strategy and user
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 
+//export the passport
 module.exports = function(passport){
 
 	passport.serializeUser(function(user, callback){
@@ -12,7 +14,9 @@ module.exports = function(passport){
 			callback(err, user);
 		});
 	});
-
+//checking on signup if there is a user
+//if no user then create one
+//if user then have them signin
 	passport.use('local-signup', new LocalStrategy({
 		usernameField: 'email',
 		passwordField: 'password',
@@ -34,7 +38,9 @@ module.exports = function(passport){
 			}
 		});
 	}));
-
+//checking if user doesnt exist
+//if no user then alert them to sign up
+//if password is wrong then tell them try again
 	passport.use('local-login', new LocalStrategy({
 		usernameField: 'email',
 		passwordField: 'password',
