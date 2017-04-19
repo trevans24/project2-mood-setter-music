@@ -24,51 +24,52 @@ var playlistList = [
 ];
 
 //prepopulated songs for single playlist
-var songs = [];
+var tracks = [];
 
- 	sampleSongs.push({
+ 	tracks.push({
  		trackNumber: 1,
 		artistName: "Steve Winwood",
 		songName: "Higher Love"
  	});
- 	sampleSongs.push({
+ 	tracks.push({
  		trackNumber: 2,
 		artistName: "Luther Vandross",
 		songName: "Your Secret Love"
  	});
- 	sampleSongs.push({
+ 	tracks.push({
  		trackNumber: 3,
 		artistName: "Mariah Carey",
 		songName: "Always Be My Baby"
  	});
- 	sampleSongs.push({
+ 	tracks.push({
  		trackNumber: 4,
 		artistName: "K-Ci & JoJo",
 		songName: "All My Life"
  	});
 
-console.log(songs);
+// console.log(songs);
 
 //creating playlist with same songs in them
 db.Song.remove({}, function(err, songs){
-	console.log('Removed all songs');
-	db.Song.create(songs, function(err, songs){
+	// console.log('Removed all songs');
+	db.Song.create(tracks, function(err, songs){
 		if (err) {
 			console.log(err);
 		}
 	db.Playlist.remove({}, function(err, playlists){
 		playlistList.forEach(function(playlistData){
+			console.log(playlistData);
 			var playlist = new db.Playlist({
 				playlistName: playlistData.playlistName
 			});
 			console.log(playlist);
-			db.Song.find({}, function(err, foundSongs){
-				console.log(foundSongs);
+			db.Song.find({}, function(err, songs){
+				console.log(songs);
 				if(err){
 					console.log(err);
 					return;
 				}
-				playlist.songs = foundSongs;
+				playlist.songs = songs;
 				playlist.save(function(err, savedPlaylist){
 					if(err){
 						return console.log(err);
