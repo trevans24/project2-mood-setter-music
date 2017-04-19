@@ -48,6 +48,47 @@ var routes = require('./config/passport-routes');
 app.use(routes);
 
 
+//HTML Endpoints
+
+app.get('/', function homepage (req, res){
+	res.sendFile(__dirname + '/views/index.ejs');
+});
+
+app.get('/api', function index(req, res){
+	res.json({
+		message: "Welcome to Mood Setter!",
+		base_url: 'https://tranquil-headland-64922.herokuapp.com/',
+		endpoints: [
+			{
+				method: 'GET', 
+				path: '/api', 
+				description: "show your playlist and homepage"
+			},
+			{
+				method: 'POST',
+				path: '/api/playlists',
+				description: "Add a new playlist"
+			},
+			{
+				method: 'SHOW',
+				path: '/api/playlist/:id',
+				description: "Show individual playlist"
+			},
+			{
+				method: 'PUT',
+				path: '/api/playlist/:id',
+				description: "Update your playlist"
+			},
+			{
+				method: 'DELETE',
+				path: '/api/playlist/:id',
+				description: 'Delete your playlist'
+			}
+		]
+	});
+});
+
+
 
 
 //listening on port 3000

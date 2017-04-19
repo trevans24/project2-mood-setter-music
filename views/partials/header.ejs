@@ -4,9 +4,16 @@
     <meta charset="utf-8">
     <title>Mood Setter Music App</title>
     <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./scripts/player.js"></script>
+    <script type="text/javascript">
+     soundcloud.addEventListener('onPlayerReady', function(player, data) {
+       player.api_play();
+     });
+   </script>
+   <script type="text/javascript" src="./scripts/soundcould.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
   </head>
   <body>

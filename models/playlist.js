@@ -6,8 +6,8 @@ var mongoose = require('mongoose'),
 // mongoose.connect( process.env.MONGODB_URI || "YOUR CURRENT LOCALHOST DB CONNECTION STRING HERE" );
 
 var PlaylistSchema = new Schema ({
-	playlistName: String,
-	songs: [Song.schema]
+	title: String,
+	tracks: [Song.schema]
 });
 
 //Playlist model
