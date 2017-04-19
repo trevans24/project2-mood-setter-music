@@ -54,6 +54,13 @@ app.get('/', function homepage (req, res){
 	res.sendFile(__dirname + '/views/index.ejs');
 });
 
+
+//JSON API Endpoints
+
+//declare DB
+var db = require('./models');
+
+//api get to show routes
 app.get('/api', function api_index(req, res){
 	res.json({
 		message: "Welcome to Mood Setter!",
@@ -88,8 +95,13 @@ app.get('/api', function api_index(req, res){
 	});
 });
 
-
-
+//get for the playlists
+app.get('/api/playlists', function playlist_index(req, res){
+	db.Playlist.find({}, function(err, playlists){
+		if(err) console.log(err);
+		res.json(playlists);
+	});
+});
 
 
 //listening on port 3000
