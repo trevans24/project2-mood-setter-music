@@ -1,6 +1,9 @@
+//require strategy and user from model
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 
+//export passport through a function
+//will allow for checking on users and passwords in DB
 module.exports = function(passport){
 
 	passport.serializeUser(function(user, callback){
@@ -13,6 +16,7 @@ module.exports = function(passport){
 		});
 	});
 
+//sign up new users
 	passport.use('local-signup', new LocalStrategy({ //based off signup.ejs file look for these in the form
 		usernameField: 'email',
 		passwordField: 'password',
@@ -21,7 +25,7 @@ module.exports = function(passport){
 		User.findOne({'local.email': email}, function(err, user){//find user base off email used in usernameField
 			if (err) return callback(err);
 			if (user){
-				return callback(null, false, req.flash('signupMessage', 'This username already exists!'));//if user already exists
+				return callback(null, false, req.flash('signupMessage', 'This user is already a part of Mood Setter!'));//if user already exists
 			} else {//if user does not exist in DB
 				var newUser = new User(); //create a new user
 				newUser.local.email = email; //create username off email
@@ -35,6 +39,7 @@ module.exports = function(passport){
 		});
 	}));
 
+//check for user in database off login
 	passport.use('local-login', new LocalStrategy({//login based off login.ejs
 		usernameField: 'email',
 		passwordField: 'password',
@@ -43,10 +48,10 @@ module.exports = function(passport){
 		User.findOne({'local.email': email}, function(err, user){
 			if (err) {return callback(err);}
 			if (!user){
-				return callback(null, false, req.flash('loginMessage', 'No user found!'));//no user found (no err, no user, message)
+				return callback(null, false, req.flash('loginMessage', 'No user found in Mood Setters database!'));//no user found (no err, no user, message)
 			}
 			if (!user.validPassword(password)){
-				return callback(null, false, req.flash('loginMessage', 'Oops! Wrong Password'));//wrong password (no err, wrong password, message)
+				return callback(null, false, req.flash('loginMessage', 'Oops! Wrong password, perhaps you should try again!'));//wrong password (no err, wrong password, message)
 			}
 			return callback(null, user);
 		});

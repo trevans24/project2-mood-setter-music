@@ -1,11 +1,12 @@
+//require passport
 var passport = require("passport");
 
-// GET /signup
+// GET /signup rendering signup ejs file
 function getSignup(request, response, next) {
 	response.render('signup.ejs', {message: request.flash('signupMessage')});
 }
 
-// POST /signup //new user signup save & post to DB
+// POST //new user signup
 function postSignup(request, response, next) {
 	var signupStrategy = passport.authenticate('local-signup', {
 		successRedirect: '/',
@@ -15,12 +16,12 @@ function postSignup(request, response, next) {
 	return signupStrategy(request, response, next);
 }
 
-// GET /login
+// GET /login render login ejs file
 function getLogin(request, response, next) { 
 	response.render('login.ejs', {message: request.flash('loginMessage')});
 }
 
-// POST /login 
+// POST /login authenticating user at login
 function postLogin(request, response, next) {
 	var loginStrategy = passport.authenticate('local-login', {
 		successRedirect: '/',
@@ -30,22 +31,18 @@ function postLogin(request, response, next) {
 	return loginStrategy(request, response, next);
 }
 
-// GET /logout
+// GET /logout signing out user from page
 function getLogout(request, response, next) {
 	request.logout();
 	response.redirect('/');
 }
 
-// Restricted page
-function secret(request, response, next){
-	response.json("message: Seeeeecccccrrrrreeeeeettttt");
-}
 
+//exporting routes for use on signin and signup
 module.exports = {
   getLogin: getLogin,
   postLogin: postLogin ,
   getSignup: getSignup,
   postSignup: postSignup,
-  getLogout: getLogout,
-  secret: secret
+  getLogout: getLogout
 };

@@ -27,7 +27,4 @@ function authenticatedUser(req,res,next){
 	res.redirect('/');
 }
 
-router.route("/secret")
-	.get(authenticatedUser, usersController.secret)
-
 module.exports = router

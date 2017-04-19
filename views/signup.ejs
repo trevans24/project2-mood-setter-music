@@ -1,15 +1,20 @@
+<!-- include header -->
 <% include ./partials/header.ejs %>
 <% if (message.length > 0) {%>
   <div class="alert alert-danger"><%= message%></div>
 <% } %>
+
+<!-- sign up form -->
 <h2>Signup</h2>
 
+<!-- signup email label and textfield -->
 <form method="post" action="/signup">
   <div class="form-group">
     <label for="email">Email</label>
     <input class="form-control" type="text" name="email" id="email">
   </div>
 
+<!-- signup password label and textfield -->
   <div class="form-group">
     <label for="email">Password</label>
     <input class="form-control" type="password" name="password" id="password">
@@ -17,3 +22,6 @@
 
   <input class="btn btn-default" type="submit">
 </form>
+
+<!-- use footer -->
+<% include ./partials/footer.ejs %>
