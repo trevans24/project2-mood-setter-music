@@ -1,47 +1,51 @@
-//require passport
-var passport = require('passport');
+var passport = require("passport");
 
-//GET ---Signup ejs file to render
-function getSignup(req, res, next){
-	res.render('signup.ejs', {message: req.flash('signupMessage')});
+// GET /signup
+function getSignup(request, response, next) {
+	response.render('signup.ejs', {message: request.flash('signupMessage')});
 }
 
-//new user, signup and save to the Database
-function postSignup(req, res, next){
+// POST /signup //new user signup save & post to DB
+function postSignup(request, response, next) {
 	var signupStrategy = passport.authenticate('local-signup', {
 		successRedirect: '/',
 		failureRedirect: '/signup',
 		failureFlash: true
 	});
-	return signupStrategy(req, res, next);
+	return signupStrategy(request, response, next);
 }
 
-//login GET
-function getLogin(req, res, next){
-	res.render('login.ejs', {message: req.flash('loginMessage')});
+// GET /login
+function getLogin(request, response, next) { 
+	response.render('login.ejs', {message: request.flash('loginMessage')});
 }
 
-//login POST
-function postLogin(req, res, next){
+// POST /login 
+function postLogin(request, response, next) {
 	var loginStrategy = passport.authenticate('local-login', {
 		successRedirect: '/',
 		failureRedirect: '/login',
 		failureFlash: true
 	});
-	return loginStrategy(req, res, next);
+	return loginStrategy(request, response, next);
 }
 
-//logout GET
-function getLogout(req, res, next){
-	req.logout();
-	res.redirect('/');
+// GET /logout
+function getLogout(request, response, next) {
+	request.logout();
+	response.redirect('/');
 }
 
-//export routes
+// Restricted page
+function secret(request, response, next){
+	response.json("message: Seeeeecccccrrrrreeeeeettttt");
+}
+
 module.exports = {
-getLogin: getLogin,
+  getLogin: getLogin,
   postLogin: postLogin ,
   getSignup: getSignup,
   postSignup: postSignup,
-  getLogout: getLogout
+  getLogout: getLogout,
+  secret: secret
 };

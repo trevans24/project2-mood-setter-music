@@ -1,61 +1,54 @@
-//require strategy and user
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 
-//export the passport
 module.exports = function(passport){
 
 	passport.serializeUser(function(user, callback){
 		callback(null, user.id);
 	});
 
-	passport.serializeUser(function(id, callback){
+	passport.deserializeUser(function(id, callback){
 		User.findById(id, function(err, user){
 			callback(err, user);
 		});
 	});
-//checking on signup if there is a user
-//if no user then create one
-//if user then have them signin
-	passport.use('local-signup', new LocalStrategy({
+
+	passport.use('local-signup', new LocalStrategy({ //based off signup.ejs file look for these in the form
 		usernameField: 'email',
 		passwordField: 'password',
 		passReqToCallback: true
 	}, function(req, email, password, callback){
-		User.findOne({'local.email': emaili}, function(err, user){
-			if(err) return callback(err);
-			if(user){
-				return callback(null, false, req.flash('signupMessage', 'This user already exists'));
-			} else {
-				var newUser = new User();
-				newUser.local.email = email;
-				newUser.local.password = newUser.encrypt(password);
+		User.findOne({'local.email': email}, function(err, user){//find user base off email used in usernameField
+			if (err) return callback(err);
+			if (user){
+				return callback(null, false, req.flash('signupMessage', 'This username already exists!'));//if user already exists
+			} else {//if user does not exist in DB
+				var newUser = new User(); //create a new user
+				newUser.local.email = email; //create username off email
+				newUser.local.password = newUser.encrypt(password);//encrypt is method used to save password
 
-				newUser.save(function(err){
-					if(err) throw err;
+				newUser.save(function(err){//save user to DB
+					if (err) throw err;
 					return callback(null, newUser);
 				});
 			}
 		});
 	}));
-//checking if user doesnt exist
-//if no user then alert them to sign up
-//if password is wrong then tell them try again
-	passport.use('local-login', new LocalStrategy({
+
+	passport.use('local-login', new LocalStrategy({//login based off login.ejs
 		usernameField: 'email',
 		passwordField: 'password',
 		passReqToCallback: true
 	}, function(req, email, password, callback){
 		User.findOne({'local.email': email}, function(err, user){
-			if(err) return callback(err);
-			if(!user){
-				return callback(null, false, req.flash('loginMessage', 'Sorry no User by that email exists!'));
+			if (err) {return callback(err);}
+			if (!user){
+				return callback(null, false, req.flash('loginMessage', 'No user found!'));//no user found (no err, no user, message)
 			}
-			if(!user.validPassword(password)){
-				return callback(null, false, req.flash('loginMessage', 'Ooops! Sorry, wrong password...maybe you need to play some better music'));
+			if (!user.validPassword(password)){
+				return callback(null, false, req.flash('loginMessage', 'Oops! Wrong Password'));//wrong password (no err, wrong password, message)
 			}
 			return callback(null, user);
 		});
 	}));
-
 };
