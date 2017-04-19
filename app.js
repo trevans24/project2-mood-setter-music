@@ -29,7 +29,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 //use express to initialize passport
-// app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' })); 
+app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' })); 
 app.use(passport.initialize());
 app.use(passport.session()); 
 app.use(flash()); 
