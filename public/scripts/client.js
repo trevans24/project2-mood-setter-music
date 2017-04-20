@@ -1,29 +1,32 @@
 //front sided AJAX
-
 $(document).ready(function(){
 	console.log("Making sure this works");
-	var playlist;
 
-var key = require('client_id');
+  var icon = $('.play');
+  icon.click(function() {
+     icon.toggleClass('active');
+     return false;
+  });
 
-var beginning = 'https://api.soundcloud.com/',
-	user = 'users/302529741',
-	playlists = '/playlists/',
-	playlistId = '316783201',
-	client = '?client_id=';
 
-// url: beginning + user + playlist + playlistId + client + '7PzyA3QRoqAdj9Veay4qRSuIKpYBghIf'
 
-console.log(key);
+
+//initial load to show playlists already in DB
 $.get('/api/playlists', function(res){
 	console.log("client is loaded!");
 	res.forEach(function(playlist){
-		console.log(playlist);
+		// console.log(playlist);
+		renderPlaylist(playlist);
 	});
 });
 
-// app.get('')
-
+// get a playlist from the API
+$('.find').on('click', function getPlaylist(){
+	$.get('/api/playlists', function (e){
+		e.preventDefault();
+		console.log("hello");
+	});
+});
 
 
 
@@ -38,10 +41,21 @@ $.get('/api/playlists', function(res){
 //this is for each new bubble
 function renderPlaylist(playlist){
 	console.log('Rendering: ', playlist);
-
+	// console.log(playlist._id);
 	var playlistHTML = 
+"<div class='playlist data-playlist-id='" + playlist._id + ">" +
+"	<div class='col-md-3 col-md-offest-1'>" +
+"	<!-- internal section of playlist bubbles -->" +
+"		<div class='playlist-body'>" +
+"			<div class='col-md-1'>" +
+"				<span class='playlist-name'>" + playlist.playlistName + "</span>" +
+"			</div>" +
+"		</div> " +
+"		<!-- end of internal section -->" +
+"	</div>" +
+"</div>";
 
-
+$('#playlists').append(playlistHTML);
 
 
 

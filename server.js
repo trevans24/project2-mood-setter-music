@@ -8,6 +8,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
+var request		 = require('request');
 
 //use express for morgan, cookie parser, and body parser
 app.use(morgan('dev')); 
@@ -26,7 +27,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 //use express to initialize passport
-app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' })); 
+app.use(session({ secret: 'Mood-Setter-Music' })); 
 app.use(passport.initialize());
 app.use(passport.session()); 
 app.use(flash()); 
@@ -92,7 +93,20 @@ app.get('/api', function api_index(req, res){
 	});
 });
 
-//GET for the playlists
+
+//defining the url breakdown
+var beginning = 'https://api.soundcloud.com/',
+	user = 'users/302529741',
+	playlists = '/playlists/',
+	playlistId = '316783201',
+	client = '?client_id=';
+
+// var total = 'https://soundcloud.com/user-68692531/sets/date';
+
+var client_id = require('./env.js');
+
+
+//GET for all the playlists in seeded DB
 app.get('/api/playlists', function playlist_index(req, res){
 	db.Playlist.find({}, function(err, playlists){
 		if(err) console.log(err);
@@ -100,13 +114,22 @@ app.get('/api/playlists', function playlist_index(req, res){
 	});
 });
 
+request(
+	beginning + user + playlists + playlistId + client + client_id,
+	function(err, res, body){
+		// console.log(err);
+		// console.log(res);
+		// console.log(body);
+		var playlist = JSON.parse(body);
+		console.log(playlist);
+		res.json(playlist);
+	});
+
+
+
 //POST a new playlist
 app.post('/api/playlists', function createPlaylist(req, res){
 		console.log('Posting a new Playlist!');
-		// console.log(req.body);
-		// console.log(req.body);
-		// console.log(req.body.playlistName);
-		// console.log(req.body.tracks);
 		var newPlaylist = new db.Playlist({
 			playlistName: req.body.playlistName,
 			tracks: req.body.tracks
