@@ -45,13 +45,10 @@ app.use(function(req, res, next){
 var routes = require('./config/passport-routes');
 app.use(routes);
 
-
 //HTML Endpoints
-
 app.get('/', function homepage (req, res){
 	res.sendFile(__dirname + '/views/index.ejs');
 });
-
 
 //JSON API Endpoints
 
@@ -105,18 +102,22 @@ var beginning = 'https://api.soundcloud.com/',
 
 var client_id = require('./env.js');
 
-
-//GET for all the playlists in seeded DB
-app.get('/api/playlists', function playlist_index(req, res){
+//get for all playlists in DB
+app.get('/home', function playlistIndex(req, res){
 	db.Playlist.find({}, function(err, playlists){
-		if(err) console.log(err);
+		if (err){
+			console.log(err);
+		}
 		res.json(playlists);
 	});
 });
 
-request(
+
+//GET for a playlists in seeded DB
+app.get('/api/playlists', function playlistFind(req, res){
+	request(
 	beginning + user + playlists + playlistId + client + client_id,
-	function(err, res, body){
+	function(err, response, body){
 		// console.log(err);
 		// console.log(res);
 		// console.log(body);
@@ -124,7 +125,7 @@ request(
 		console.log(playlist);
 		res.json(playlist);
 	});
-
+});
 
 
 //POST a new playlist

@@ -12,30 +12,29 @@ $(document).ready(function(){
 
 
 //initial load to show playlists already in DB
-$.get('/api/playlists', function(res){
+$.get('/home', function(res){
 	console.log("client is loaded!");
+	// console.log(res);
 	res.forEach(function(playlist){
-		// console.log(playlist);
+		console.log(playlist);
 		renderPlaylist(playlist);
 	});
 });
 
 // get a playlist from the API
-$('.find').on('click', function getPlaylist(){
-	$.get('/api/playlists', function (e){
-		e.preventDefault();
-		console.log("hello");
+$('.find').on('click', function getPlaylist(res){
+	$.ajax({
+		url: '/api/playlists',
+		type: 'GET',
+		data: res,
+		success: console.log(res)
 	});
 });
 
 
 
 
-
-
-
 });
-
 
 //function buids a single playlist button to render
 //this is for each new bubble
