@@ -37,7 +37,6 @@ function getLogout(request, response, next) {
 	response.redirect('/');
 }
 
-
 //exporting routes for use on signin and signup
 module.exports = {
   getLogin: getLogin,

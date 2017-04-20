@@ -4,6 +4,8 @@ $(document).ready(function(){
 	console.log("Making sure this works");
 	var playlist;
 
+var key = require('client_id');
+
 var beginning = 'https://api.soundcloud.com/',
 	user = 'users/302529741',
 	playlists = '/playlists/',
