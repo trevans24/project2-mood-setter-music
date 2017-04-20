@@ -152,8 +152,16 @@ app.put('/api/playlists/:id', function(req, res){
 });
 
 
-
-//delete
+//DELETE a playlist
+app.delete('/api/playlists/:id', function(req, res){
+	// console.log(req.body);
+	var playlistId = req.params.id;
+	db.Playlist.findOneAndRemove({_id: playlistId}, function(err, deletedPlaylist){
+		console.log("Deleted", deletedPlaylist.playlistName);
+		// res.end();
+		res.json(deletedPlaylist);
+	});
+});
 
 
 
