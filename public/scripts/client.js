@@ -14,7 +14,9 @@ var beginning = 'https://api.soundcloud.com/',
 
 // url: beginning + user + playlist + playlistId + client + '7PzyA3QRoqAdj9Veay4qRSuIKpYBghIf'
 
+console.log(key);
 $.get('/api/playlists', function(res){
+	console.log("client is loaded!");
 	res.forEach(function(playlist){
 		console.log(playlist);
 	});
@@ -30,3 +32,17 @@ $.get('/api/playlists', function(res){
 
 
 });
+
+
+//function buids a single playlist button to render
+//this is for each new bubble
+function renderPlaylist(playlist){
+	console.log('Rendering: ', playlist);
+
+	var playlistHTML = 
+
+
+
+
+
+}
