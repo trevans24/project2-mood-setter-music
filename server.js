@@ -9,9 +9,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
-//connecting mongoose
-mongoose.connect('mongodb://localhost/mood-setter-music'); 
-
 //use express for morgan, cookie parser, and body parser
 app.use(morgan('dev')); 
 app.use(cookieParser());
@@ -102,6 +99,42 @@ app.get('/api/playlists', function playlist_index(req, res){
 		res.json(playlists);
 	});
 });
+
+//post a new playlist
+app.post('/api/playlists', function createPlaylist(req, res){
+		console.log('Posting a new Playlist!');
+		// console.log(req.body);
+		// console.log(req.body);
+		// console.log(req.body.playlistName);
+		// console.log(req.body.tracks);
+		var newPlaylist = new db.Playlist({
+			playlistName: req.body.playlistName,
+			tracks: req.body.tracks
+		});
+		console.log(newPlaylist);
+		newPlaylist.save(function(err, playlist){
+			if (err){
+				console.log(err);
+			}
+			console.log(playlist);
+			res.json(playlist);
+		});
+	});
+
+//get a single playlist
+app.get('/api/playlists/:id', function(req, res){
+	db.Playlist.findOne({_id: req.params.id}, function(err, data){
+		res.json(data);
+	});
+});
+
+
+//update
+
+
+
+//delete
+
 
 
 //listening on port 3000

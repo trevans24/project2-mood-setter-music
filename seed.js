@@ -1,9 +1,9 @@
 //require the models for db
 var db = require('./models');
 
+
 //prepopulated playlist
-var playlistList = [
-{
+var playlistList = [{
 	playlistName: "Date",
 	tracks: [{
 		trackNumber: 1,
@@ -24,42 +24,17 @@ var playlistList = [
  		trackNumber: 4,
 		artistName: "K-Ci & JoJo",
 		songName: "All My Life"
- 	}
-	]
-}
-];
-
-
-//creating playlist with same songs in them
-db.Song.remove({}, function(err, songs){
-	// console.log('Removed all songs');
-	db.Song.create(function(err, songs){
-		if (err) {
-			console.log(err);
-		}
-	db.Playlist.remove({}, function (err, playlists){
-		playlistList.forEach(function(playlistData){
-			console.log(playlistData);
-			var playlist = new db.Playlist({
-				playlistName: playlistData.playlistName,
-				tracks: playlistData.tracks
-			});
-			console.log(playlist);
-			db.Song.find({}, function(err, songs){
-				console.log(songs);
-				if(err){
-					console.log(err);
-					return;
-				}
-				playlist.songs = songs;
-				playlist.save(function(err, savedPlaylist){
-					if(err){
-						return console.log(err);
-					}
-					console.log(savedPlaylist);
-				});
-			});
-		});
-		});
-	});
+ 	}]
+}];
+console.log('hello');
+db.Playlist.remove({}, function (err, playlists){
+	console.log('removed all playlists');
+db.Playlist.create(playlistList, function(err, playlists){
+	if (err){
+		console.log(err);
+	} else {
+		console.log("created playlists", playlists);
+		process.exit();
+	}
+});
 });

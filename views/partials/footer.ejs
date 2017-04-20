@@ -1,9 +1,29 @@
    </main>
 	<script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+	<!-- <script src="http://w.soundcloud.com/player/api.js"></script> -->
+    <script type="text/javascript" src="./scripts/player.js"></script>
 	<script type="text/javascript" src=""></script>
-  </body>
+  	<iframe id="test" width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/317619385&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+  	<footer>
+    <script type="text/javascript">
+      var widget = SC.Widget("test");
+      widget.bind(SC.Widget.Events.READY, function() {
+        widget.pause();
+            //widget.load(newsong);
+            widget.load("https://soundcloud.com/user-68692531/sets/date");
+          });
+      
+      SC.initialize({
+  		client_id: '7PzyA3QRoqAdj9Veay4qRSuIKpYBghIf'
+		});
 
-  <footer>
+      SC.get('/tracks', {
+  genres: 'punk', bpm: { from: 120 }
+}).then(function(tracks) {
+  console.log(tracks);
+});
+        </script>
   	<h2>&copy Troy Evans</h2>
   </footer>
+  </body>
 </html>

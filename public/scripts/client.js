@@ -1,17 +1,24 @@
-
-var playlist;
-
-var beginning = 'https://api.soundcloud.com/',
-	playlist = 'playlists/',
-	playlistId = '34',
-	client = '?client_id=',
-
+//front sided AJAX
 
 $(document).ready(function(){
 	console.log("Making sure this works");
+	var playlist;
 
-$.get('/api/playlists')
+var beginning = 'https://api.soundcloud.com/',
+	user = 'users/302529741',
+	playlists = '/playlists/',
+	playlistId = '316783201',
+	client = '?client_id=';
 
+// url: beginning + user + playlist + playlistId + client + '7PzyA3QRoqAdj9Veay4qRSuIKpYBghIf'
+
+$.get('/api/playlists', function(res){
+	res.forEach(function(playlist){
+		console.log(playlist);
+	});
+});
+
+// app.get('')
 
 
 

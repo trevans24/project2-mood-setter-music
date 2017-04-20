@@ -1,5 +1,5 @@
-var SC = SC || {};
-SC.Widget = function(n) {
+var SC = SC || 
+{}; SC.Widget = function(n) {
     function t(r) {
         if (e[r]) return e[r].exports;
         var o = e[r] = {

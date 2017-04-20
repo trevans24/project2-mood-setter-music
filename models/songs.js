@@ -12,8 +12,8 @@ var SongSchema = new Schema({
 });
 
 //song model
-var Song = mongoose.model('Song', SongSchema);
+var Songs = mongoose.model('Songs', SongSchema);
 
 //export song
 
-module.exports = Song;
+module.exports = Songs;
