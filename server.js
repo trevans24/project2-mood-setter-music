@@ -92,7 +92,7 @@ app.get('/api', function api_index(req, res){
 	});
 });
 
-//get for the playlists
+//GET for the playlists
 app.get('/api/playlists', function playlist_index(req, res){
 	db.Playlist.find({}, function(err, playlists){
 		if(err) console.log(err);
@@ -100,7 +100,7 @@ app.get('/api/playlists', function playlist_index(req, res){
 	});
 });
 
-//post a new playlist
+//POST a new playlist
 app.post('/api/playlists', function createPlaylist(req, res){
 		console.log('Posting a new Playlist!');
 		// console.log(req.body);
@@ -121,7 +121,7 @@ app.post('/api/playlists', function createPlaylist(req, res){
 		});
 	});
 
-//get a single playlist
+//SHOW a single playlist
 app.get('/api/playlists/:id', function(req, res){
 	db.Playlist.findOne({_id: req.params.id}, function(err, data){
 		res.json(data);
@@ -129,7 +129,14 @@ app.get('/api/playlists/:id', function(req, res){
 });
 
 
-//update
+//PUT a playlist
+app.post('/api/playlists/:id', function(req, res){
+	db.Playlist.findById(req.params.id, function(err, foundPlaylist){
+		console.log(req.body);
+		console.log(req.params.id);
+		console.log(req.params);
+	});
+});
 
 
 
