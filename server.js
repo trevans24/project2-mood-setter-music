@@ -131,16 +131,24 @@ app.get('/api/playlists/:id', function(req, res){
 // console.log('hello');
 //PUT a playlist
 app.put('/api/playlists/:id', function(req, res){
-	// db.Playlist.findOne({_id: req.params.id}, function(err, foundPlaylist){
-	// 	if (err){
-	// 		console.log("Update error: " + err);
-	// 	}
-		console.log("hello");
-		console.log(req.body);
-		console.log(req.params.id);
-		console.log(req.params);
-		res.end();
-	// });
+	var playlistId = req.params.id;
+	db.Playlist.findOne({_id: playlistId}, function(err, foundPlaylist){
+		if (err){
+			console.log("Update error: " + err);
+		}
+		// console.log(foundPlaylist);
+		// console.log(req.body);
+		// console.log(req.body.playlistName);
+		foundPlaylist.playlistName = req.body.playlistName;
+		foundPlaylist.tracks = req.body.tracks;
+		foundPlaylist.save(function(err, playlist){
+			if (err){
+				return console.log("Update error: " + err);
+			}
+			console.log("Updated ", playlist.playlistName);
+			res.json(playlist);
+		});
+	});
 });
 
 
