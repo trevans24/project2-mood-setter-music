@@ -1,16 +1,35 @@
 <% include ./partials/header.ejs %>
-
+<!-- for use in playlist search and add -->
 <section>
-	<div class="add-playlist">
-		<div class="add"></div>
-		<!-- <a href="#" title="play playlist" class="play"></a> -->
-	</div>
+	<form>
+	<!-- grouping related fields of a form -->
+		<fieldset>
+		<!-- defining the captioin for the form -->
+			<legend>Add New Playlist</legend>
+				<!-- text input for playlist name -->
+				<div class="form-group">
+					<label>Playlist Name</label>
+					<input id="name" type="text" name="name" placeholder="" required="">
+				</div>
+				<div class="form-group">
+					<label>Mood</label>
+					<input id="mood" type="text" name="mood" placeholder="" required="">
+				</div>
+				<!-- submit button to find and add -->
+				<div class="form-group">
+					<label>Save Playlist</label>
+					<button id="submit" name="submit" class="btn btn-primary">Add Playlist</button>
+				</div>
+		</fieldset>
+	</form>
+</section>
+<!-- holding playlist bubbles -->
+<section>
 	<!-- playlist section -->
 	<div id="playlists" class="row playlist" attr="playlist._id">
 	</div>
 </section>
-<!-- for use in playlist popup -->
-<!-- <li>
-	<span class="playlist-tracks"></span>
-</li> -->
-<% include ./partials/footer.ejs %>
+
+
+
+<% include ./partials/footer.ejs %> 
