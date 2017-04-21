@@ -103,7 +103,7 @@ var beginning = 'https://api.soundcloud.com/',
 var client_id = require('./env.js');
 
 //get for all playlists in DB
-app.get('/home', function playlistIndex(req, res){
+app.get('/api/playlists', function playlistIndex(req, res){
 	db.Playlist.find({}, function(err, playlists){
 		if (err){
 			console.log(err);
@@ -113,8 +113,8 @@ app.get('/home', function playlistIndex(req, res){
 });
 
 
-//GET for a playlists in seeded DB
-app.get('/api/playlists', function playlistFind(req, res){
+//GET for a playlists in seeded DB check...
+app.get('/test', function playlistFind(req, res){
 	request(
 	beginning + user + playlists + playlistId + client + client_id,
 	function(err, response, body){
@@ -148,10 +148,10 @@ app.post('/api/playlists', function createPlaylist(req, res){
 //SHOW a single playlist
 app.get('/api/playlists/:id', function(req, res){
 	db.Playlist.findOne({_id: req.params.id}, function(err, data){
-		res.json(data);
+		// console.log(err);
+		// res.json(data);
 	});
 });
-
 // console.log('hello');
 //PUT a playlist
 app.put('/api/playlists/:id', function(req, res){

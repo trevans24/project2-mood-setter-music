@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
 
 var PlaylistSchema = new Schema ({
 	playlistName: String,
+	playlistURL: String,
 	tracks: [Songs.schema]
 });
 
