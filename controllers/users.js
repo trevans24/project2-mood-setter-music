@@ -37,6 +37,10 @@ function getLogout(request, response, next) {
 	response.redirect('/');
 }
 
+//TEST page to see if i understand what is going on
+function test(req, res, next){
+	res.render('test.ejs');
+}
 //exporting routes for use on signin and signup
 module.exports = {
   getLogin: getLogin,

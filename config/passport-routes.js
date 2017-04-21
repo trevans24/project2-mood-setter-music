@@ -4,7 +4,10 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 // Used to manipulate POST methods
 var methodOverride = require('method-override');
+//require passport
 var passport = require("passport");
+
+//require controllers
 var usersController = require('../controllers/users');
 var staticsController = require('../controllers/statics');
 
@@ -34,9 +37,9 @@ router.route("/logout")
 //playlist routes
 /////////////////////////////
 
-//GET playlist route
-// router.route('/api/playlists')
-// 	.get()
+//GET playlist route test page
+// router.route('/test')
+	// .get(usersController.test)
 
 //SHOW playlist route
 // router.route('/api/playlists/:id')

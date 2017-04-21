@@ -41,7 +41,7 @@ app.use(function(req, res, next){
 	next();
 });
 
-//routes required from config folder
+//passport routes required from config folder
 var routes = require('./config/passport-routes');
 app.use(routes);
 
@@ -122,7 +122,7 @@ app.get('/test', function playlistFind(req, res){
 		// console.log(res);
 		// console.log(body);
 		var playlist = JSON.parse(body);
-		console.log(playlist);
+		console.log(playlist.permalink_url);
 		res.json(playlist);
 	});
 });
