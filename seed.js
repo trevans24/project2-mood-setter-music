@@ -25,23 +25,23 @@ var playlistList = [{
 		artistName: "K-Ci & JoJo",
 		songName: "All My Life"
  	}]
- 	},
- 	{
-	 	playlistName: "Rave",
-		playlistURL: 'http://soundcloud.com/kimik/sets/dj-mixes',
-		tracks:[{}]
-	},
-	{
-		playlistName: "Gym Rap",
-		playlistURL: 'https://soundcloud.com/user-68692531/sets/test',
-		tracks:[{}]
-	},
-	{
-		playlistName: "Kill Shit",
-		playlistURL: 'https://soundcloud.com/danielle-hughes-398515986/sets/five-finger-death-punch',
-		tracks:[{}]
+ 	// },
+ // 	{
+	//  	playlistName: "Rave",
+	// 	playlistURL: 'http://soundcloud.com/kimik/sets/dj-mixes',
+	// 	tracks:[{}]
+	// },
+	// {
+	// 	playlistName: "Gym Rap",
+	// 	playlistURL: 'https://soundcloud.com/user-68692531/sets/test',
+	// 	tracks:[{}]
+	// },
+	// {
+	// 	playlistName: "Kill Shit",
+	// 	playlistURL: 'https://soundcloud.com/danielle-hughes-398515986/sets/five-finger-death-punch',
+	// 	tracks:[{}]
 	}];
-console.log('hello');
+// console.log('hello');
 db.Playlist.remove({}, function (err, playlists){
 	console.log('removed all playlists');
 db.Playlist.create(playlistList, function(err, playlists){

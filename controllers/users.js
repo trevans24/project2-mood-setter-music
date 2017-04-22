@@ -9,7 +9,7 @@ function getSignup(request, response, next) {
 // POST //new user signup
 function postSignup(request, response, next) {
 	var signupStrategy = passport.authenticate('local-signup', {
-		successRedirect: '/',
+		successRedirect: '/login',
 		failureRedirect: '/signup',
 		failureFlash: true
 	});
@@ -24,7 +24,7 @@ function getLogin(request, response, next) {
 // POST /login authenticating user at login
 function postLogin(request, response, next) {
 	var loginStrategy = passport.authenticate('local-login', {
-		successRedirect: '/',
+		successRedirect: '/playlists',
 		failureRedirect: '/login',
 		failureFlash: true
 	});
@@ -34,7 +34,7 @@ function postLogin(request, response, next) {
 // GET /logout signing out user from page
 function getLogout(request, response, next) {
 	request.logout();
-	response.redirect('/');
+	response.redirect('/login');
 }
 
 //TEST page to see if i understand what is going on

@@ -10,14 +10,15 @@ var passport = require("passport");
 //require controllers
 var usersController = require('../controllers/users');
 var staticsController = require('../controllers/statics');
-
+var playlistController = require('../controllers/playlists');
 ///////////////////////////
 //user routes
 //////////////////////////
 
 //home page
-router.route('/')
-  .get(staticsController.home);
+router.route('/playlists')
+	// authenticatedUser()
+  .get(staticsController.home)
 
 //new user check and create
 router.route('/signup')
@@ -37,9 +38,13 @@ router.route("/logout")
 //playlist routes
 /////////////////////////////
 
+//POST a new playlist
+router.route('/playlists')
+	.post(playlistController.createPlaylist)
+
 //GET playlist route test page
-// router.route('/test')
-	// .get(usersController.test)
+router.route('/api/playlists')
+	.get(playlistController.playlistIndex)
 
 //SHOW playlist route
 // router.route('/api/playlists/:id')
@@ -57,7 +62,7 @@ router.route("/logout")
 
 function authenticatedUser(req,res,next){
 	if (req.isAuthenticated()) return next();
-	res.redirect('/');
+	res.redirect('/login');
 }
 
 module.exports = router
