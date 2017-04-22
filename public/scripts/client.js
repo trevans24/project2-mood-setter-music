@@ -66,19 +66,19 @@ $('form').submit(function(event){
 });
 });
 // console.log('test1');
-console.log($('#delete'));
+// console.log($('#delete'));
 
 //DELETE a playlist bubble
-$('#delete').on('click', function deletePlaylist(event){
-	event.preventDefault();
-	// SC.delete('/playlists');
-	$.ajax({
-		url: '/playlists',
-		type: 'DELETE',
-		data: data,
-		success: console.log("deleted", data),
-		error: console.log(error)
-	});
+$('#delete').click('.delete-playlist', function(e){
+	e.preventDefault();
+	console.log("hello");
+	// $.ajax({
+	// 	url: '/playlists',
+	// 	type: 'DELETE',
+	// 	data: data,
+	// 	success: console.log("deleted", data),
+	// 	error: console.log(error)
+	// });
 });
 
 
@@ -98,7 +98,7 @@ function renderPlaylist(playlist){
 	"			</div>" +
 	"		</div> " +
 	"</div>"+
-	"<button id='delete' class='btn data-playlist-id='" + playlist._id + "'>POP</button>"+
+	"<button id='delete' class='btn delete-playlist data-playlist-id='" + playlist._id + "'>POP</button>"+
 	"</section>";
 
 	$('#playlists').append(playlistHTML);

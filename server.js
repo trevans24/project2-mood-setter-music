@@ -66,11 +66,6 @@ app.get('/api', function api_index(req, res){
 				path: '/playlists',
 				description: "Add a new playlist"
 			},
-			// {
-			// 	method: 'SHOW',
-			// 	path: '/api/playlists/:id',
-			// 	description: "Show individual playlist"
-			// },
 			{
 				method: 'PUT',
 				path: '/playlists/:id',

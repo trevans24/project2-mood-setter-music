@@ -46,22 +46,17 @@ router.route('/playlists')
 router.route('/api/playlists')
 	.get(playlistController.playlistIndex)
 
-//DELETE playlist
-router.route('/playlists')
-	.delete(playlistController.deletePlaylist)
-
-//SHOW playlist route
-// router.route('/api/playlists/:id')
-// 	.get()
+// SHOW playlist route
+router.route('/api/playlists/:id')
+	.get(playlistController.showPlaylist)
 
 //PUT playlist route
-// router.route('/api/playlists/:id')
-// 	.put(usersController, function(){
+router.route('/api/playlists/:id')
+	.put(playlistController.putPlaylist)
 
-//  	});
-
-//DELETE playlist route
-// router.route('/api/playlists/:id')
+//DELETE playlist
+router.route('/api/playlists/:id')
+	.delete(playlistController.deletePlaylist)
 
 
 function authenticatedUser(req,res,next){

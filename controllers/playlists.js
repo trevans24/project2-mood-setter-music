@@ -44,51 +44,53 @@ function createPlaylist(req, res){
 }
 
 //SHOW a single playlist
-// app.get('/api/playlists/:id', function(req, res){
-// 	db.Playlist.findOne({_id: req.params.id}, function(err, data){
-// 		// console.log(err);
-// 		// res.json(data);
-// 	});
-// });
+function showPlaylist(req, res){
+	db.Playlist.findOne({_id: req.params.id}, function(err, data){
+		// console.log(err);
+		res.json(data);
+	});
+}
 
 
 //PUT a playlist
-// app.put('/api/playlists/:id', function(req, res){
-// 	var playlistId = req.params.id;
-// 	db.Playlist.findOne({_id: playlistId}, function(err, foundPlaylist){
-// 		if (err){
-// 			console.log("Update error: " + err);
-// 		}
-// 		// console.log(foundPlaylist);
-// 		// console.log(req.body);
-// 		// console.log(req.body.playlistName);
-// 		foundPlaylist.playlistName = req.body.playlistName;
-// 		foundPlaylist.tracks = req.body.tracks;
-// 		foundPlaylist.save(function(err, playlist){
-// 			if (err){
-// 				return console.log("Update error: " + err);
-// 			}
-// 			console.log("Updated ", playlist.playlistName);
-// 			res.json(playlist);
-// 		});
-// 	});
-// });
+function putPlaylist(req, res){
+	var playlistId = req.params.id;
+	db.Playlist.findOne({_id: playlistId}, function(err, foundPlaylist){
+		if (err){
+			console.log("Update error: " + err);
+		}
+		// console.log(foundPlaylist);
+		// console.log(req.body);
+		// console.log(req.body.playlistName);
+		foundPlaylist.playlistName = req.body.playlistName;
+		foundPlaylist.tracks = req.body.tracks;
+		foundPlaylist.save(function(err, playlist){
+			if (err){
+				return console.log("Update error: " + err);
+			}
+			console.log("Updated ", playlist.playlistName);
+			res.json(playlist);
+		});
+	});
+}
 
 
 //DELETE a playlist
 function deletePlaylist(req, res){
 	console.log(req);
 	console.log(res);
-	// var playlistId = req.params.id;
-	// db.Playlist.findOneAndRemove({_id: playlistId}, function(err, deletedPlaylist){
-	// 	console.log("Deleted", deletedPlaylist.playlistName);
-	// 	// res.end();
-	// 	res.json(deletedPlaylist);
-	// });
+	var playlistId = req.params.id;
+	db.Playlist.findOneAndRemove({_id: playlistId}, function(err, deletedPlaylist){
+		console.log("Deleted", deletedPlaylist.playlistName);
+		// res.end();
+		res.json(deletedPlaylist);
+	});
 }
 
 module.exports = {
 	playlistIndex: playlistIndex,
 	createPlaylist: createPlaylist,
+	showPlaylist: showPlaylist,
+	putPlaylist: putPlaylist,
 	deletePlaylist: deletePlaylist
 };

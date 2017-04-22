@@ -34,10 +34,19 @@ section {
 	}
 
 	.btn {
-		margin-left: 140px;
+		margin-left: 90px;
+		color: white;
 	}
 
 /*each playlist bubble*/
+	#delete {
+		background-color: rgba(165,40,3,.8);
+		border-radius: 50%;
+		height: 60px;
+		width: 60px;
+		margin-left: 140px;
+	}
+
 	.playlist-bubbles{
 		width: 250px;
 		display: inline-block;
@@ -47,13 +56,6 @@ section {
 		text-align: center;
 		width: 40px;
 		margin-left: 40px;
-	}
-
-	.bubble .btn{
-		background-color: rgba(165,40,3,.5);
-		border-radius: 50%;
-		height: 60px;
-		width: 60px;
 	}
 
 	.ball {
