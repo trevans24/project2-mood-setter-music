@@ -28,7 +28,7 @@ $.get('/api/playlists', function(res){
 	});
 });
 
-//sc get a playist url
+//POST a playist to the page
 $('form').submit(function(event){
 	event.preventDefault();
 	// console.log(formData.mood);
@@ -47,7 +47,7 @@ $('form').submit(function(event){
 	// console.log(playlistSearch[15].permalink_url);
 	var newPlaylist = {
 		playlistName: name,
-		playlistURL: playlistSearch[15].permalink_url,
+		playlistURL: playlistSearch[25].permalink_url,
 		tracks: []
 	};
 	// console.log(newPlaylist);
@@ -71,7 +71,7 @@ $('form').submit(function(event){
 //DELETE a playlist bubble
 $('#playlists').on('click', '.delete-playlist', function(e){
 	e.preventDefault();
-	console.log("hello");
+	// console.log("hello");
 	var id = $(this).parents('.bubble').data('playlist-id');
 	console.log(id);
 	$.ajax({
@@ -82,6 +82,12 @@ $('#playlists').on('click', '.delete-playlist', function(e){
 	});
 });
 
+
+// PUT a playlist bubble
+$('#playlist').on('click', '.edit-playlist', function(e){
+	e.preventDefault();
+	console.log("Edit Clicked");
+});
 
 
 });
@@ -98,6 +104,7 @@ function renderPlaylist(playlist){
 	"				<h4 class='playlist-name'>" + playlist.playlistName + "</h4>" +
 	"			</div>" +
 	"		</div> " +
+	"<button id='edit' class='btn edit-playlist data-playlist-id='" + playlist._id + "'>EDIT</button>"+
 	"<button id='delete' class='btn delete-playlist data-playlist-id='" + playlist._id + "'>POP</button>"+
 	"</div>"+
 	"</section>";

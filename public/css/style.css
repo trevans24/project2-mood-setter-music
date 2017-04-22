@@ -39,14 +39,25 @@ section {
 	}
 
 /*each playlist bubble*/
+/*delete button*/
 	#delete {
 		background-color: rgba(165,40,3,.8);
 		border-radius: 50%;
 		height: 60px;
 		width: 60px;
-		margin-left: 180px;
+		margin-left: 160px;
 	}
 
+/*edit button*/
+	#edit {
+		background-color: rgba(165,40,3,.8);
+		border-radius: 50%;
+		height: 60px;
+		width: 60px;
+		margin-left: 160px;
+	}
+
+/*styling for bubbles*/
 	.playlist-bubbles{
 		width: 250px;
 		display: inline-block;
@@ -139,6 +150,7 @@ section {
 		background: radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 74%, white 80%, white 84%, rgba(255, 255, 255, 0) 100%); 
 	}
 
+/*slight shadowing and view*/
 	.stage {
 		width: 200px;
 		height: 200px;
@@ -156,6 +168,7 @@ section {
 		perspective-origin: 50% 50%;
 	}
 	
+/*animating the bubble*/
 	@-webkit-keyframes bubble-anim {
 		0% {
 			-webkit-transform: scale(1);
