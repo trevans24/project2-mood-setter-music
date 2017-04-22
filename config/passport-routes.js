@@ -46,6 +46,10 @@ router.route('/playlists')
 router.route('/api/playlists')
 	.get(playlistController.playlistIndex)
 
+//DELETE playlist
+router.route('/playlists')
+	.delete(playlistController.deletePlaylist)
+
 //SHOW playlist route
 // router.route('/api/playlists/:id')
 // 	.get()

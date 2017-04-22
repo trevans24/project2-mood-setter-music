@@ -1,5 +1,11 @@
+/*background image*/
+html{
+	/*background-image: url('./images/abstract-color-clouds.jpg');*/
+}
+
 /*each playlist bubble*/
 .bubble {
+	display: inline-block;
 	height: 200px;
 	width: 200px;
 	border-radius: 50%;
@@ -8,6 +14,7 @@
 	margin: 20px;
 	padding-top: 50px;
 	position: relative;
+	text-align: center;
 }
 
 .bubble h4{
@@ -22,9 +29,10 @@
 	width: 40px;
 }
 
-/*iframe sizing*/
-iframe {
-	height: 300px;
+/*widget location*/
+aside{
+	clear: both;
+	float: right;
 }
 
 /*playlist holder div*/
@@ -44,4 +52,5 @@ h4 {
 form {
 	float: right;
 	width: 300px;
+	height: 200px;
 }

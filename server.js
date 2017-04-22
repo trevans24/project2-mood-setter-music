@@ -50,6 +50,41 @@ app.get('/', function homepage (req, res){
 	res.sendFile(__dirname + '/views/index.ejs');
 });
 
+//SHOW ALL ROUTES
+app.get('/api', function api_index(req, res){
+	res.json({
+		message: "Welcome to Mood Setter!",
+		base_url: 'https://tranquil-headland-64922.herokuapp.com/',
+		endpoints: [
+			{
+				method: 'GET', 
+				path: '/api/playlists', 
+				description: "show your playlist and homepage"
+			},
+			{
+				method: 'POST',
+				path: '/api/playlists',
+				description: "Add a new playlist"
+			},
+			{
+				method: 'SHOW',
+				path: '/api/playlists/:id',
+				description: "Show individual playlist"
+			},
+			{
+				method: 'PUT',
+				path: '/api/playlists/:id',
+				description: "Update your playlist"
+			},
+			{
+				method: 'DELETE',
+				path: '/api/playlists/:id',
+				description: 'Delete your playlist'
+			}
+		]
+	});
+});
+
 //listening on port 3000
 app.listen(process.env.PORT || 3000, function(){
 	console.log("Listening on localhost:3000");

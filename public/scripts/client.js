@@ -2,11 +2,16 @@
 $(document).ready(function(){
 // console.log("Making sure this works");
 
+//adding the widget for playing
+ var widget = SC.Widget("test");
+      widget.bind(SC.Widget.Events.READY, function() {
+        widget.pause();
+      });
 
 //test initializing for search functionality
 SC.initialize({
-  		client_id: '7PzyA3QRoqAdj9Veay4qRSuIKpYBghIf'
-		});
+	client_id: '7PzyA3QRoqAdj9Veay4qRSuIKpYBghIf'
+});
 
 //initial load page
 $.get('/playlists', function(res){
@@ -35,9 +40,9 @@ $('form').submit(function(event){
 	var mood = $('#mood').val();
 	// console.log(name);
 	// console.log(mood);
-SC.get('/playlists', {
-	kind: 'playlist',
-	sharing: 'public',
+	SC.get('/playlists', {
+		kind: 'playlist',
+		sharing: 'public',
 	title: mood//this is the changable field
 }).then(function(playlistSearch){
 	// console.log(playlistSearch[15]);
@@ -54,7 +59,7 @@ SC.get('/playlists', {
 		type: 'POST',
 		data: newPlaylist,
 		success: console.log("New Playlist Added: " + newPlaylist.playlistName)
-		});
+	});
 	$('#name').val('');
 	$('#mood').val('');
 	// console.log($(this));
@@ -69,13 +74,14 @@ SC.get('/playlists', {
 $('#delete').on('click', function deletePlaylist(event){
 	event.preventDefault();
 	console.log(event);
-	$.ajax({
-		url: '/playlists',
-		type: 'DELETE',
-		data: data,
-		success: console.log("deleted", data),
-		error: console.log(error)
-	});
+	console.log($(this));
+	// $.ajax({
+	// 	url: '/playlists',
+	// 	type: 'DELETE',
+	// 	data: data,
+	// 	success: console.log("deleted", data),
+	// 	error: console.log(error)
+	// });
 });
 
 
@@ -86,9 +92,6 @@ $('#delete').on('click', function deletePlaylist(event){
 //function buids a single playlist button to render
 //this is for each new bubble
 function renderPlaylist(playlist){
-	// console.log('test4');
-	// console.log('Rendering: ', playlist);
-	// console.log(playlist._id);
 	var playlistHTML = 
 	"<div class='bubble' data-playlist-id='" + playlist._id + "' data-playlist-url='" + playlist.playlistURL + "'>" +
 	"		<div class='playlist-body'>" +
@@ -101,7 +104,6 @@ function renderPlaylist(playlist){
 
 	$('#playlists').append(playlistHTML);
 	// console.log($('.bubble'));
-	// get a playlist from the API
 	$('.bubble').last().on('click', function playlistFind(e){
 		e.preventDefault();
 		var url = $(this).data("playlist-url");

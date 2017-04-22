@@ -1,42 +1,6 @@
 //JSON API Endpoints
 var db = require('../models');
 
-//api get to show routes
-// app.get('/api', function api_index(req, res){
-// 	res.json({
-// 		message: "Welcome to Mood Setter!",
-// 		base_url: 'https://tranquil-headland-64922.herokuapp.com/',
-// 		endpoints: [
-// 			{
-// 				method: 'GET', 
-// 				path: '/api/playlists', 
-// 				description: "show your playlist and homepage"
-// 			},
-// 			{
-// 				method: 'POST',
-// 				path: '/api/playlists',
-// 				description: "Add a new playlist"
-// 			},
-// 			{
-// 				method: 'SHOW',
-// 				path: '/api/playlists/:id',
-// 				description: "Show individual playlist"
-// 			},
-// 			{
-// 				method: 'PUT',
-// 				path: '/api/playlists/:id',
-// 				description: "Update your playlist"
-// 			},
-// 			{
-// 				method: 'DELETE',
-// 				path: '/api/playlists/:id',
-// 				description: 'Delete your playlist'
-// 			}
-// 		]
-// 	});
-// });
-
-
 //defining the url breakdown
 var beginning = 'https://api.soundcloud.com/',
 	user = 'users/302529741',
@@ -44,7 +8,6 @@ var beginning = 'https://api.soundcloud.com/',
 	playlistId = '316783201',
 	client = '?client_id=';
 
-// var total = 'https://soundcloud.com/user-68692531/sets/date';
 
 // var client_id = require('./env.js');
 
@@ -87,7 +50,8 @@ function createPlaylist(req, res){
 // 		// res.json(data);
 // 	});
 // });
-// console.log('hello');
+
+
 //PUT a playlist
 // app.put('/api/playlists/:id', function(req, res){
 // 	var playlistId = req.params.id;
@@ -114,6 +78,7 @@ function createPlaylist(req, res){
 //DELETE a playlist
 function deletePlaylist(req, res){
 	console.log(req);
+	console.log(res);
 	// var playlistId = req.params.id;
 	// db.Playlist.findOneAndRemove({_id: playlistId}, function(err, deletedPlaylist){
 	// 	console.log("Deleted", deletedPlaylist.playlistName);
