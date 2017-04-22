@@ -2,11 +2,11 @@
 var db = require('../models');
 
 //defining the url breakdown
-var beginning = 'https://api.soundcloud.com/',
-	user = 'users/302529741',
-	playlists = '/playlists/',
-	playlistId = '316783201',
-	client = '?client_id=';
+// var beginning = 'https://api.soundcloud.com/',
+// 	user = 'users/302529741',
+// 	playlists = '/playlists/',
+// 	playlistId = '316783201',
+// 	client = '?client_id=';
 
 
 // var client_id = require('./env.js');

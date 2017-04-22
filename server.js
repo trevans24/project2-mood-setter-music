@@ -46,7 +46,7 @@ var routes = require('./config/passport-routes');
 app.use(routes);
 
 //HTML Endpoints
-app.get('/playlists', function homepage (req, res){
+app.get('/', function homepage (req, res){
 	res.sendFile(__dirname + '/views/index.ejs');
 });
 
@@ -65,6 +65,11 @@ app.get('/api', function api_index(req, res){
 				method: 'POST',
 				path: '/playlists',
 				description: "Add a new playlist"
+			},
+			{
+				method: 'SHOW',
+				path: '/api/playlists/:id',
+				description: "Show individual playlist"
 			},
 			{
 				method: 'PUT',

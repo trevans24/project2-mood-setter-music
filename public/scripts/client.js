@@ -69,16 +69,17 @@ $('form').submit(function(event){
 // console.log($('#delete'));
 
 //DELETE a playlist bubble
-$('#delete').click('.delete-playlist', function(e){
+$('#playlists').on('click', '.delete-playlist', function(e){
 	e.preventDefault();
 	console.log("hello");
-	// $.ajax({
-	// 	url: '/playlists',
-	// 	type: 'DELETE',
-	// 	data: data,
-	// 	success: console.log("deleted", data),
-	// 	error: console.log(error)
-	// });
+	var id = $(this).parents('.bubble').data('playlist-id');
+	console.log(id);
+	$.ajax({
+		url: '/api/playlists/' + id,
+		type: 'DELETE',
+		data: id,
+		success: console.log("deleted playlist: " + id)
+	});
 });
 
 
@@ -97,8 +98,8 @@ function renderPlaylist(playlist){
 	"				<h4 class='playlist-name'>" + playlist.playlistName + "</h4>" +
 	"			</div>" +
 	"		</div> " +
-	"</div>"+
 	"<button id='delete' class='btn delete-playlist data-playlist-id='" + playlist._id + "'>POP</button>"+
+	"</div>"+
 	"</section>";
 
 	$('#playlists').append(playlistHTML);
