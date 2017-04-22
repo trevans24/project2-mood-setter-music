@@ -93,14 +93,16 @@ $('#delete').on('click', function deletePlaylist(event){
 //this is for each new bubble
 function renderPlaylist(playlist){
 	var playlistHTML = 
-	"<div class='bubble' data-playlist-id='" + playlist._id + "' data-playlist-url='" + playlist.playlistURL + "'>" +
+	"<section"+
+	"<div class='ball bubble' data-playlist-id='" + playlist._id + "' data-playlist-url='" + playlist.playlistURL + "'>" +
 	"		<div class='playlist-body'>" +
 	"			<div class='col-md-1'>" +
 	"				<h4 class='playlist-name'>" + playlist.playlistName + "</h4>" +
 	"			</div>" +
-	"			<button id='delete' class='btn data-playlist-id='" + playlist._id + "'>&times</button>"+
 	"		</div> " +
-	"</div>";
+	"		<button id='delete' class='btn data-playlist-id='" + playlist._id + "'>&times</button>"+
+	"</div>"+
+	"</section>";
 
 	$('#playlists').append(playlistHTML);
 	// console.log($('.bubble'));
