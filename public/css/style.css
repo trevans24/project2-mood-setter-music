@@ -5,19 +5,43 @@ body {
 	background-size: cover;
 }
 
+/*nav bar*/
+nav {
+	opacity: .5;
+}
+
+/*section*/
+section {
+	margin: 15px;
+	display: block;
+}
+
+/*playlist holder div*/
+	#playlists {
+		float: left;
+		width: 100%;
+		height: 425px;
+	}
+
+/*form*/
+	form {
+		padding: 10px;
+		float: right;
+		width: 300px;
+		height: 200px;
+		background-color: rgba(255,255,255,.5);
+		margin-bottom: 10px;
+	}
+
+	.btn {
+		margin-left: 140px;
+	}
+
 /*each playlist bubble*/
-/*.bubble {
-	display: inline-block;
-	height: 200px;
-	width: 200px;
-	border-radius: 50%;
-	border: 5px solid rgba(96,163,153,.5);
-	background-color: rgba(96,163,153,.8);
-	margin: 20px;
-	padding-top: 50px;
-	position: relative;
-	text-align: center;
-	}*/
+	.playlist-bubbles{
+		width: 250px;
+		display: inline-block;
+	}
 
 	.bubble h4 {
 		text-align: center;
@@ -28,45 +52,12 @@ body {
 	.bubble .btn{
 		background-color: rgba(165,40,3,.5);
 		border-radius: 50%;
-		margin: 0 0 0 90px;
-		height: 40px;
-		width: 40px;
+		height: 60px;
+		width: 60px;
 	}
 
-	/*widget location*/
-	aside {
-		clear: both;
-		float: right;
-	}
-
-	/*playlist holder div*/
-	#playlists {
-		float: left;
-		width: 100%;
-		height: 425px;
-	}
-
-	/*form*/
-	form {
-		padding: 10px;
-		float: right;
-		width: 300px;
-		height: 200px;
-		border: 3px solid white;
-		background-color: white;
-	}
-
-	legend {
-		background-color: white;
-	}
-
-	.btn {
-		margin-left: 90px;
-	}
-
-	/*better bubble test*/
 	.ball {
-		margin: 20px;
+		margin: 0 0 30px 70px;
 		padding: 20px;
 		text-align: center;
 		display: inline-block;
@@ -162,14 +153,7 @@ body {
 		-o-perspective-origin: 50% 50%;
 		perspective-origin: 50% 50%;
 	}
-
-	body {
-		width: 00px;
-		margin: 20px auto;
-		background: linear-gradient(to bottom, rgba(100, 100, 100, 0.2) 0%, rgba(255, 255, 255, 0.5) 40%, #ffffff 100%);
-		background-repeat: no-repeat;
-	}
-
+	
 	@-webkit-keyframes bubble-anim {
 		0% {
 			-webkit-transform: scale(1);

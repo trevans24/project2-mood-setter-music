@@ -3,10 +3,10 @@ $(document).ready(function(){
 // console.log("Making sure this works");
 
 //adding the widget for playing
- var widget = SC.Widget("test");
-      widget.bind(SC.Widget.Events.READY, function() {
-        widget.pause();
-      });
+var widget = SC.Widget("test");
+widget.bind(SC.Widget.Events.READY, function() {
+	widget.pause();
+});
 
 //test initializing for search functionality
 SC.initialize({
@@ -16,8 +16,6 @@ SC.initialize({
 //initial load page
 $.get('/playlists', function(res){
 	// console.log("client is loaded!");
-	// console.log(req);
-	// console.log("hello");
 	// console.log(res);
 });
 
@@ -33,7 +31,6 @@ $.get('/api/playlists', function(res){
 //sc get a playist url
 $('form').submit(function(event){
 	event.preventDefault();
-	// var formData = $(this).serialize();
 	// console.log(formData.mood);
 	// console.log(formData);
 	var name = $('#name').val();
@@ -43,8 +40,8 @@ $('form').submit(function(event){
 	SC.get('/playlists', {
 		kind: 'playlist',
 		sharing: 'public',
-	title: mood//this is the changable field
-}).then(function(playlistSearch){
+		title: mood //this is the changable field
+	}).then(function(playlistSearch){
 	// console.log(playlistSearch[15]);
 	// console.log('test3');
 	// console.log(playlistSearch[15].permalink_url);
@@ -69,19 +66,19 @@ $('form').submit(function(event){
 });
 });
 // console.log('test1');
+console.log($('#delete'));
 
 //DELETE a playlist bubble
 $('#delete').on('click', function deletePlaylist(event){
 	event.preventDefault();
-	console.log(event);
-	console.log($(this));
-	// $.ajax({
-	// 	url: '/playlists',
-	// 	type: 'DELETE',
-	// 	data: data,
-	// 	success: console.log("deleted", data),
-	// 	error: console.log(error)
-	// });
+	// SC.delete('/playlists');
+	$.ajax({
+		url: '/playlists',
+		type: 'DELETE',
+		data: data,
+		success: console.log("deleted", data),
+		error: console.log(error)
+	});
 });
 
 
@@ -92,16 +89,16 @@ $('#delete').on('click', function deletePlaylist(event){
 //function buids a single playlist button to render
 //this is for each new bubble
 function renderPlaylist(playlist){
-	var playlistHTML = 
-	"<section"+
+	var playlistHTML =
+	"<section class='playlist-bubbles'>"+
 	"<div class='ball bubble' data-playlist-id='" + playlist._id + "' data-playlist-url='" + playlist.playlistURL + "'>" +
 	"		<div class='playlist-body'>" +
 	"			<div class='col-md-1'>" +
 	"				<h4 class='playlist-name'>" + playlist.playlistName + "</h4>" +
 	"			</div>" +
 	"		</div> " +
-	"		<button id='delete' class='btn data-playlist-id='" + playlist._id + "'>&times</button>"+
 	"</div>"+
+	"<button id='delete' class='btn data-playlist-id='" + playlist._id + "'>POP</button>"+
 	"</section>";
 
 	$('#playlists').append(playlistHTML);
