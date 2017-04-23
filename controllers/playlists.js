@@ -76,8 +76,8 @@ function putPlaylist(req, res){
 
 //DELETE a playlist
 function deletePlaylist(req, res){
-	console.log(req);
-	console.log(res);
+	// console.log(req.body);
+	// console.log(req.params);
 	var playlistId = req.params.id;
 	db.Playlist.findOneAndRemove({_id: playlistId}, function(err, deletedPlaylist){
 		console.log("Deleted", deletedPlaylist.playlistName);

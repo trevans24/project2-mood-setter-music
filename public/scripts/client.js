@@ -73,15 +73,15 @@ $('#playlists').on('click', '.delete-playlist', function(e){
 	e.preventDefault();
 	// console.log("hello");
 	var id = $(this).parents('.bubble').data('playlist-id');
-	// console.log(id);
+	var bubble = $(this).parents('.bubble');
+	console.log(bubble);
 	$.ajax({
 		url: '/api/playlists/' + id,
 		type: 'DELETE',
-		data: id,
-		success: console.log("deleted playlist: " + id)
+		data: bubble,
+		success: [$(bubble).remove()]
 	});
 });
-
 
 // PUT a playlist bubble
 $('#playlists').on('click', '.edit-playlist', function(e){
