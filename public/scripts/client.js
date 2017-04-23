@@ -73,7 +73,7 @@ $('#playlists').on('click', '.delete-playlist', function(e){
 	e.preventDefault();
 	// console.log("hello");
 	var id = $(this).parents('.bubble').data('playlist-id');
-	console.log(id);
+	// console.log(id);
 	$.ajax({
 		url: '/api/playlists/' + id,
 		type: 'DELETE',
@@ -84,11 +84,21 @@ $('#playlists').on('click', '.delete-playlist', function(e){
 
 
 // PUT a playlist bubble
-$('#playlist').on('click', '.edit-playlist', function(e){
+$('#playlists').on('click', '.edit-playlist', function(e){
 	e.preventDefault();
-	console.log("Edit Clicked");
+	// console.log("Edit Clicked");
+	var id = $(this).parents('.bubble').data('playlist-id');
+	// console.log(id);
+	$('#playlistModal').data('playlist-id', id);
+	$('#playlistModal').modal();
 });
 
+// $.ajax({
+	// 	url: '/api/plalists/' + id,
+	// 	type: 'PUT',
+	// 	data: id,
+	// 	success: console.log("Updated Playlist: " + id)
+	// });
 
 });
 

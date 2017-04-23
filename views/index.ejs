@@ -1,26 +1,11 @@
 <% include ./partials/header.ejs %>
+<!-- <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script> -->
+<body class="parallax">
 <!-- for use in playlist search and add -->
 <section>
-	<form>
-	<!-- grouping related fields of a form -->
-		<fieldset>
-		<!-- defining the captioin for the form -->
-			<legend>Add New Playlist</legend>
-				<!-- text input for playlist name -->
-				<div class="form-group">
-					<label>Playlist Name</label>
-					<input id="name" type="text" name="name" placeholder="" required="">
-				</div>
-				<div class="form-group">
-					<label>Mood</label>
-					<input id="mood" type="text" name="mood" placeholder="" required="">
-				</div>
-				<!-- submit button to find and add -->
-				<div class="form-group">
-					<button id="submit" name="submit" class="btn btn-primary">Add Playlist</button>
-				</div>
-		</fieldset>
-	</form>
 	<!-- <aside> -->
 		<iframe id="test" width="300" height="200" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/317619385&amp;auto_play=true&amp;hide_related=false&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;visual=true"></iframe>
 	<!-- </aside> -->
@@ -28,6 +13,5 @@
 	<div id="playlists" class="row playlist" attr="playlist._id">
 	</div>
 </section>
-
 
 <% include ./partials/footer.ejs %> 

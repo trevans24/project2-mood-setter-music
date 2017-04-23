@@ -63,7 +63,6 @@ function putPlaylist(req, res){
 		// console.log(req.body);
 		// console.log(req.body.playlistName);
 		foundPlaylist.playlistName = req.body.playlistName;
-		foundPlaylist.tracks = req.body.tracks;
 		foundPlaylist.save(function(err, playlist){
 			if (err){
 				return console.log("Update error: " + err);
