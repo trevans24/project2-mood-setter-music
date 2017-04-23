@@ -40,23 +40,23 @@ router.route("/logout")
 
 //POST a new playlist
 router.route('/playlists')
-	.post(playlistController.createPlaylist)
+	.post(authenticatedUser, playlistController.createPlaylist)
 
 //GET playlist route test page
 router.route('/api/playlists')
-	.get(playlistController.playlistIndex)
+	.get(authenticatedUser, playlistController.playlistIndex)
 
 // SHOW playlist route
 router.route('/api/playlists/:id')
-	.get(playlistController.showPlaylist)
+	.get(authenticatedUser, playlistController.showPlaylist)
 
 //PUT playlist route
 router.route('/api/playlists/:id')
-	.put(playlistController.putPlaylist)
+	.put(authenticatedUser, playlistController.putPlaylist)
 
 //DELETE playlist
 router.route('/api/playlists/:id')
-	.delete(playlistController.deletePlaylist)
+	.delete(authenticatedUser, playlistController.deletePlaylist)
 
 
 function authenticatedUser(req,res,next){

@@ -60,9 +60,11 @@ function putPlaylist(req, res){
 			console.log("Update error: " + err);
 		}
 		// console.log(foundPlaylist);
-		// console.log(req.body);
-		// console.log(req.body.playlistName);
+		console.log(req.body);
+		console.log(req.params.id);
 		foundPlaylist.playlistName = req.body.playlistName;
+		// foundPlaylist.tracks = req.body.tracks;
+		foundPlaylist.id = req.params.id;
 		foundPlaylist.save(function(err, playlist){
 			if (err){
 				return console.log("Update error: " + err);

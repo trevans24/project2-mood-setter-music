@@ -90,15 +90,36 @@ $('#playlists').on('click', '.edit-playlist', function(e){
 	var id = $(this).parents('.bubble').data('playlist-id');
 	// console.log(id);
 	$('#playlistModal').data('playlist-id', id);
+	// console.log($('#playlistModal'));
 	$('#playlistModal').modal();
 });
 
-// $.ajax({
-	// 	url: '/api/plalists/' + id,
-	// 	type: 'PUT',
-	// 	data: id,
-	// 	success: console.log("Updated Playlist: " + id)
-	// });
+	$('#save').on('click', function updatePlaylist(e){
+		e.preventDefault();
+		var newName = $('#playlistName').val();
+		// console.log(playlistName);
+		var id = $('#playlistModal').data('playlist-id');
+		// console.log(id);
+		var bubble = $(this).parents('.bubble');
+		var playlistData = {
+			playlistName: newName
+		};
+		console.log(playlistData);
+		$.ajax({
+		url: '/api/playlists/' + id,
+		type: 'PUT',
+		data: playlistData,
+		success: [function(data){
+			// console.log(playlistData);
+			// console.log(bubble);
+			$('.bubble[data-playlist-id=' + id + ']').remove();
+			// $(bubble).remove();
+			renderPlaylist(data);
+		}]
+	});
+		$('#playlistName').val('');
+		$('#playlistModal').modal('toggle');
+	});
 
 });
 
