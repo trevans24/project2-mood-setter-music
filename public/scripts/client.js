@@ -52,7 +52,7 @@ $('form').submit(function(event){
 	};
 	// console.log(newPlaylist);
 	$.ajax({
-		url: '/playlists',
+		url: '/api/playlists',
 		type: 'POST',
 		data: newPlaylist,
 		success: console.log("New Playlist Added: " + newPlaylist.playlistName)
@@ -99,7 +99,7 @@ $('#playlists').on('click', '.edit-playlist', function(e){
 		var newName = $('#playlistName').val();
 		// console.log(playlistName);
 		var id = $('#playlistModal').data('playlist-id');
-		// console.log(id);
+		console.log(id);
 		var bubble = $(this).parents('.bubble');
 		var playlistData = {
 			playlistName: newName

@@ -39,7 +39,7 @@ router.route("/logout")
 /////////////////////////////
 
 //POST a new playlist
-router.route('/playlists')
+router.route('/api/playlists')
 	.post(authenticatedUser, playlistController.createPlaylist)
 
 //GET playlist route test page

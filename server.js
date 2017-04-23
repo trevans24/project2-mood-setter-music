@@ -8,7 +8,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
-var request		 = require('request');
+// var request		 = require('request');
 
 //use express for morgan, cookie parser, and body parser
 app.use(morgan('dev')); 
@@ -46,7 +46,7 @@ var routes = require('./config/passport-routes');
 app.use(routes);
 
 //HTML Endpoints
-app.get('/', function homepage (req, res){
+app.get('/playlists', function homepage (req, res){
 	res.sendFile(__dirname + '/views/index.ejs');
 });
 

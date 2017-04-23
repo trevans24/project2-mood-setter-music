@@ -2,7 +2,7 @@
   "name": "project2-mood-setter-music",
   "version": "1.0.0",
   "description": "",
-  "main": "env.js",
+  "main": "server.js",
   "directories": {
     "test": "test"
   },
@@ -12,6 +12,7 @@
     "body-parser": "^1.0.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.1",
     "ejs": "^0.8.8",
     "express": "^4.15.2",
     "express-ejs-layouts": "^2.3.0",
