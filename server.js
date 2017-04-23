@@ -54,7 +54,7 @@ app.get('/playlists', function homepage (req, res){
 app.get('/api', function api_index(req, res){
 	res.json({
 		message: "Welcome to Mood Setter!",
-		base_url: 'https://tranquil-headland-64922.herokuapp.com/',
+		base_url: 'https://tranquil-headland-64922.herokuapp.com/playlists',
 		endpoints: [
 			{
 				method: 'GET', 
