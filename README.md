@@ -10,7 +10,7 @@ The whole project finally just clicked on Friday when I really understood exactl
 Anyways, this project was an idea I came up with after seeing something similar with another GA students "project"...I thought it would of been a great chance to use another API to build something that did what I thought could be done better by some other music apps. Turns out that maybe working with another API not your own is rather difficult to acheive something so simple as to what my current app does.
 
 # WireFrames
-![](mood-setter-music.png)
+![](images/mood-setter-music.png)
 
 # Trello
 https://trello.com/b/IvXZRLi4/mood-setter-music-app
