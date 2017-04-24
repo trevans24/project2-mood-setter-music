@@ -4,8 +4,8 @@ $(document).ready(function(){
 
 //adding the widget for playing
 var widget = SC.Widget("test");
-widget.bind(SC.Widget.Events.READY, function() {
-	widget.pause();
+	widget.bind(SC.Widget.Events.READY, function() {
+		widget.pause();
 });
 
 //test initializing for search functionality
