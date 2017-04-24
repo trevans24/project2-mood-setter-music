@@ -9,12 +9,12 @@ This is a story of an epic journey across a desert land, with scattered mirages 
 https://trello.com/b/IvXZRLi4/mood-setter-music-app
 
 # Technologies Used
-BootStrap
-EJS
-SoundCloud Widget
-SoundCloud API
-Passport
-Mocha and Chai
+1. BootStrap
+2. EJS
+3. SoundCloud Widget
+4. SoundCloud API
+5. Passport
+6. Mocha and Chai
 
 
 # GitHub push locations
