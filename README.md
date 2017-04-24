@@ -6,7 +6,7 @@ This is a story of an epic journey across a desert land, with scattered mirages 
 ![](mood-setter-music.pdf)
 
 # Trello
-![]https://trello.com/b/IvXZRLi4/mood-setter-music-app
+![] https://trello.com/b/IvXZRLi4/mood-setter-music-app
 
 # Technologies Used
 BootStrap
@@ -18,7 +18,7 @@ Mocha and Chai
 
 
 # GitHub push locations
-![]https://github.com/trevans24/project2-mood-setter-music
+![] https://github.com/trevans24/project2-mood-setter-music
 
 # Where to use the app
-1[]https://tranquil-headland-64922.herokuapp.com/playlists
+1[] https://tranquil-headland-64922.herokuapp.com/playlists
