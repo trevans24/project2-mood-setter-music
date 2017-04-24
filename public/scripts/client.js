@@ -94,9 +94,9 @@ $('#playlists').on('click', '.edit-playlist', function(e){
 	$('#playlistModal').modal();
 });
 
-	$('#save').on('click', function updatePlaylist(e){
-		e.preventDefault();
-		var newName = $('#playlistName').val();
+$('#save').on('click', function updatePlaylist(e){
+	e.preventDefault();
+	var newName = $('#playlistName').val();
 		// console.log(playlistName);
 		var id = $('#playlistModal').data('playlist-id');
 		console.log(id);
@@ -106,10 +106,10 @@ $('#playlists').on('click', '.edit-playlist', function(e){
 		};
 		console.log(playlistData);
 		$.ajax({
-		url: '/api/playlists/' + id,
-		type: 'PUT',
-		data: playlistData,
-		success: [function(data){
+			url: '/api/playlists/' + id,
+			type: 'PUT',
+			data: playlistData,
+			success: [function(data){
 			// console.log(playlistData);
 			// console.log(bubble);
 			$('.bubble[data-playlist-id=' + id + ']').remove();

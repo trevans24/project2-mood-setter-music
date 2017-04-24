@@ -1,16 +1,6 @@
 //JSON API Endpoints
 var db = require('../models');
 
-//defining the url breakdown
-// var beginning = 'https://api.soundcloud.com/',
-// 	user = 'users/302529741',
-// 	playlists = '/playlists/',
-// 	playlistId = '316783201',
-// 	client = '?client_id=';
-
-
-// var client_id = require('./env.js');
-
 //get for all playlists in DB
 function playlistIndex(req, res){
 	db.Playlist.find({}, function(err, playlists){
@@ -25,7 +15,7 @@ function playlistIndex(req, res){
 
 //POST a new playlist
 function createPlaylist(req, res){
-		console.log('Posting a new Playlist!');
+	console.log('Posting a new Playlist!');
 		// console.log(req.body);
 		var newPlaylist = new db.Playlist({
 			playlistName: req.body.playlistName,
@@ -41,7 +31,7 @@ function createPlaylist(req, res){
 			res.json(playlist);
 		});
 
-}
+	}
 
 //SHOW a single playlist
 function showPlaylist(req, res){

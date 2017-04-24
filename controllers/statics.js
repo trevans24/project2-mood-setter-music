@@ -1,6 +1,6 @@
 // GET /
 function home(req, res) {  
-  res.render('index');
+	res.render('index');
 }
 
 // test page
@@ -9,6 +9,6 @@ function test(req, res){
 }
 
 module.exports = {
-  home: home,
-  test: test
+	home: home,
+	test: test
 };

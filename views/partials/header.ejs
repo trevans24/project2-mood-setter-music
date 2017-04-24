@@ -1,109 +1,109 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mood Setter Music App</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <!-- Latest compiled and minified CSS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  </head>
-  <!-- for background image and scroll -->
-  <body class="parallax">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mood Setter Music App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <!-- Latest compiled and minified CSS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<!-- for background image and scroll -->
+<body class="parallax">
 
   <!-- nav bar for use in both web and mobile -->
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <!-- better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/playlists">Mood Setter Music App</a>
-        </div>
-
-        <!-- toggling for forms and login/logout-->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <% if (currentUser) {%>
-            <li><a href="/logout">Logout <%= currentUser.local.email %></a></li>
-            <% } else { %>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Signup</a></li> 
-            <% } %>
-          </ul>
-        </div>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <!-- better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/playlists">Mood Setter Music App</a>
       </div>
-    </nav>
 
-    <!-- form for adding playlists -->
+      <!-- toggling for forms and login/logout-->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <% if (currentUser) {%>
+          <li><a href="/logout">Logout <%= currentUser.local.email %></a></li>
+          <% } else { %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Signup</a></li> 
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- form for adding playlists -->
   <form>
-  <!-- grouping related fields of a form -->
+    <!-- grouping related fields of a form -->
     <fieldset>
-    <!-- defining the captioin for the form -->
+      <!-- defining the captioin for the form -->
       <legend>Add New Playlist</legend>
-        <!-- text input for playlist name -->
-        <div class="form-group">
-          <label>Playlist Name</label>
-          <input id="name" type="text" name="name" placeholder="" required="">
-        </div>
-        <div class="form-group">
-          <label>Mood</label>
-          <input id="mood" type="text" name="mood" placeholder="" required="">
-        </div>
-        <!-- submit button to find and add -->
-        <div class="form-group">
-          <button id="submit" name="submit" class="btn btn-primary">Add Playlist</button>
-        </div>
+      <!-- text input for playlist name -->
+      <div class="form-group">
+        <label>Playlist Name</label>
+        <input id="name" type="text" name="name" placeholder="" required="">
+      </div>
+      <div class="form-group">
+        <label>Mood</label>
+        <input id="mood" type="text" name="mood" placeholder="" required="">
+      </div>
+      <!-- submit button to find and add -->
+      <div class="form-group">
+        <button id="submit" name="submit" class="btn btn-primary">Add Playlist</button>
+      </div>
     </fieldset>
   </form>
 
 
-        <!-- modal for editing playlists -->
-   <div class="modal fade" tabindex="-1" role="dialog" id="playlistModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Update Playlist</h4>
-          </div>
-          <div class="modal-body">
-            <fieldset class='form-horizontal'>
+  <!-- modal for editing playlists -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="playlistModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Update Playlist</h4>
+        </div>
+        <div class="modal-body">
+          <fieldset class='form-horizontal'>
 
             <!-- Text input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="playlistName">Playlist Name</label>
               <div class="col-md-4">
-              <input id="playlistName" name="playlistName" type="text" placeholder="" class="form-control input-md" required="">
+                <input id="playlistName" name="playlistName" type="text" placeholder="" class="form-control input-md" required="">
 
               </div>
             </div>
 
             <!-- Text input, stretch goal-->
-           <!--  <div class="form-group">
-              <label class="col-md-4 control-label" for="trackNumber">Mood</label>
-              <div class="col-md-4">
-              <input id="trackNumber" name="trackNumber" type="text" placeholder="" class="form-control input-md">
+         <!--  <div class="form-group">
+            <label class="col-md-4 control-label" for="trackNumber">Mood</label>
+            <div class="col-md-4">
+            <input id="trackNumber" name="trackNumber" type="text" placeholder="" class="form-control input-md">
 
-              </div>
-            </div> -->
+            </div>
+          </div> -->
 
-            </fieldset>
-
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="save">Save changes</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+        </fieldset>
 
 
-    <main class="container">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="save">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<main class="container">

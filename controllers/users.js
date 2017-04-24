@@ -43,9 +43,9 @@ function test(req, res, next){
 }
 //exporting routes for use on signin and signup
 module.exports = {
-  getLogin: getLogin,
-  postLogin: postLogin ,
-  getSignup: getSignup,
-  postSignup: postSignup,
-  getLogout: getLogout
+	getLogin: getLogin,
+	postLogin: postLogin ,
+	getSignup: getSignup,
+	postSignup: postSignup,
+	getLogout: getLogout
 };

@@ -56,31 +56,31 @@ app.get('/api', function api_index(req, res){
 		message: "Welcome to Mood Setter!",
 		base_url: 'https://tranquil-headland-64922.herokuapp.com/playlists',
 		endpoints: [
-			{
-				method: 'GET', 
-				path: '/playlists', 
-				description: "show your playlist and homepage"
-			},
-			{
-				method: 'POST',
-				path: '/playlists',
-				description: "Add a new playlist"
-			},
-			{
-				method: 'SHOW',
-				path: '/api/playlists/:id',
-				description: "Show individual playlist"
-			},
-			{
-				method: 'PUT',
-				path: '/playlists/:id',
-				description: "Update your playlist"
-			},
-			{
-				method: 'DELETE',
-				path: '/playlists/:id',
-				description: 'Delete your playlist'
-			}
+		{
+			method: 'GET', 
+			path: '/playlists', 
+			description: "show your playlist and homepage"
+		},
+		{
+			method: 'POST',
+			path: '/playlists',
+			description: "Add a new playlist"
+		},
+		{
+			method: 'SHOW',
+			path: '/api/playlists/:id',
+			description: "Show individual playlist"
+		},
+		{
+			method: 'PUT',
+			path: '/playlists/:id',
+			description: "Update your playlist"
+		},
+		{
+			method: 'DELETE',
+			path: '/playlists/:id',
+			description: 'Delete your playlist'
+		}
 		]
 	});
 });

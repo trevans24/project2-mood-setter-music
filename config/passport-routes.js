@@ -17,22 +17,21 @@ var playlistController = require('../controllers/playlists');
 
 //home page
 router.route('/playlists')
-	// authenticatedUser()
-  .get(staticsController.home)
+.get(staticsController.home)
 
 //new user check and create
 router.route('/signup')
-  .get(usersController.getSignup)
-  .post(usersController.postSignup)
+.get(usersController.getSignup)
+.post(usersController.postSignup)
 
 //current user login check
 router.route('/login')
-  .get(usersController.getLogin)
-  .post(usersController.postLogin)
+.get(usersController.getLogin)
+.post(usersController.postLogin)
 
 //current user logout
 router.route("/logout")
-  .get(usersController.getLogout)
+.get(usersController.getLogout)
 
 /////////////////////////////
 //playlist routes
@@ -40,23 +39,23 @@ router.route("/logout")
 
 //POST a new playlist
 router.route('/api/playlists')
-	.post(authenticatedUser, playlistController.createPlaylist)
+.post(authenticatedUser, playlistController.createPlaylist)
 
 //GET playlist route test page
 router.route('/api/playlists')
-	.get(authenticatedUser, playlistController.playlistIndex)
+.get(authenticatedUser, playlistController.playlistIndex)
 
 // SHOW playlist route
 router.route('/api/playlists/:id')
-	.get(authenticatedUser, playlistController.showPlaylist)
+.get(authenticatedUser, playlistController.showPlaylist)
 
 //PUT playlist route
 router.route('/api/playlists/:id')
-	.put(authenticatedUser, playlistController.putPlaylist)
+.put(authenticatedUser, playlistController.putPlaylist)
 
 //DELETE playlist
 router.route('/api/playlists/:id')
-	.delete(authenticatedUser, playlistController.deletePlaylist)
+.delete(authenticatedUser, playlistController.deletePlaylist)
 
 
 function authenticatedUser(req,res,next){

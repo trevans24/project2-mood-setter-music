@@ -31,18 +31,18 @@ var SC = SC ||
                 e = !0;
                 break
             }
-        return e
-    }
+            return e
+        }
 
-    function s(n) {
-        var t, e, r;
-        for (t = 0, e = I.length; t < e && (r = n(I[t]), r !== !1); t++);
-    }
+        function s(n) {
+            var t, e, r;
+            for (t = 0, e = I.length; t < e && (r = n(I[t]), r !== !1); t++);
+        }
 
     function u(n) {
         var t, e, r, o = "";
         for ("//" === n.substr(0, 2) && (n = window.location.protocol + n), r = n.split("/"), t = 0, e = r.length; t < e && t < 3; t++) o += r[t], t < 2 && (o += "/");
-        return o
+            return o
     }
 
     function c(n) {
@@ -52,7 +52,7 @@ var SC = SC ||
     function l(n) {
         var t, e = [];
         for (t in n) n.hasOwnProperty(t) && e.push(n[t]);
-        return e
+            return e
     }
 
     function d(n, t, e) {
@@ -91,9 +91,9 @@ var SC = SC ||
     function v(n, t) {
         return function(e) {
             var r = o(e),
-                i = p(this),
-                a = !r && t ? e : null,
-                s = r && !t ? e : null;
+            i = p(this),
+            a = !r && t ? e : null,
+            s = r && !t ? e : null;
             return s && d(n, s, i), f(n, a, i.element), this
         }
     }
@@ -103,83 +103,83 @@ var SC = SC ||
         for (r = 0, o = t.length; r < o; r++) i = t[r], n[i] = v(i, e)
     }
 
-    function R(n, t, e) {
-        return n + "?url=" + t + "&" + g(e)
-    }
+function R(n, t, e) {
+    return n + "?url=" + t + "&" + g(e)
+}
 
-    function g(n) {
-        var t, e, r = [];
-        for (t in n) n.hasOwnProperty(t) && (e = n[t], r.push(t + "=" + ("start_track" === t ? parseInt(e, 10) : e ? "true" : "false")));
+function g(n) {
+    var t, e, r = [];
+    for (t in n) n.hasOwnProperty(t) && (e = n[t], r.push(t + "=" + ("start_track" === t ? parseInt(e, 10) : e ? "true" : "false")));
         return r.join("&")
-    }
+}
 
-    function m(n, t, e) {
-        var r, o, i = n.callbacks[t] || [];
-        for (r = 0, o = i.length; r < o; r++) i[r].apply(n.instance, e);
+function m(n, t, e) {
+    var r, o, i = n.callbacks[t] || [];
+    for (r = 0, o = i.length; r < o; r++) i[r].apply(n.instance, e);
         (a(t) || t === L.READY) && (n.callbacks[t] = [])
-    }
+}
 
-    function w(n) {
-        var t, e, r, o, i;
-        try {
-            e = JSON.parse(n.data)
-        } catch (a) {
-            return !1
-        }
-        return t = h(n.source), r = e.method, o = e.value, (!t || A(n.origin) === A(t.domain)) && (t ? (r === L.READY && (t.isReady = !0, m(t, C), E(C, t)), r !== L.PLAY || t.playEventFired || (t.playEventFired = !0), r !== L.PLAY_PROGRESS || t.playEventFired || (t.playEventFired = !0, m(t, L.PLAY, [o])), i = [], void 0 !== o && i.push(o), void m(t, r, i)) : (r === L.READY && T.push(n.source), !1))
+function w(n) {
+    var t, e, r, o, i;
+    try {
+        e = JSON.parse(n.data)
+    } catch (a) {
+        return !1
     }
+    return t = h(n.source), r = e.method, o = e.value, (!t || A(n.origin) === A(t.domain)) && (t ? (r === L.READY && (t.isReady = !0, m(t, C), E(C, t)), r !== L.PLAY || t.playEventFired || (t.playEventFired = !0), r !== L.PLAY_PROGRESS || t.playEventFired || (t.playEventFired = !0, m(t, L.PLAY, [o])), i = [], void 0 !== o && i.push(o), void m(t, r, i)) : (r === L.READY && T.push(n.source), !1))
+}
 
-    function A(n) {
-        return n.replace(Y, "")
-    }
-    var _, y, O, D = e(1),
-        b = e(2),
-        P = e(3),
-        L = D.api,
-        N = D.bridge,
-        T = [],
-        I = [],
-        C = "__LATE_BINDING__",
-        k = "http://wt.soundcloud.dev:9200/",
-        Y = /^http(?:s?)/;
-    window.addEventListener ? window.addEventListener("message", w, !1) : window.attachEvent("onmessage", w), n.exports = O = function(n, t, e) {
-        if (r(n) && (n = document.getElementById(n)), !i(n)) throw new Error("SC.Widget function should be given either iframe element or a string specifying id attribute of iframe element.");
-        t && (e = e || {}, n.src = R(k, t, e));
-        var o, a, s = h(c(n));
-        return s && s.instance ? s.instance : (o = T.indexOf(c(n)) > -1, a = new _(n), I.push(new y(a, n, o)), a)
-    }, O.Events = L, window.SC = window.SC || {}, window.SC.Widget = O, y = function(n, t, e) {
-        this.instance = n, this.element = t, this.domain = u(t.getAttribute("src")), this.isReady = !!e, this.callbacks = {}
-    }, _ = function() {}, _.prototype = {
-        constructor: _,
-        load: function(n, t) {
-            if (n) {
-                t = t || {};
-                var e = this,
-                    r = p(this),
-                    o = r.element,
-                    i = o.src,
-                    a = i.substr(0, i.indexOf("?"));
-                r.isReady = !1, r.playEventFired = !1, o.onload = function() {
-                    e.bind(L.READY, function() {
-                        var n, e = r.callbacks;
-                        for (n in e) e.hasOwnProperty(n) && n !== L.READY && f(N.ADD_LISTENER, n, r.element);
-                        t.callback && t.callback()
-                    })
-                }, o.src = R(a, n, t)
-            }
-        },
-        bind: function(n, t) {
+function A(n) {
+    return n.replace(Y, "")
+}
+var _, y, O, D = e(1),
+b = e(2),
+P = e(3),
+L = D.api,
+N = D.bridge,
+T = [],
+I = [],
+C = "__LATE_BINDING__",
+k = "http://wt.soundcloud.dev:9200/",
+Y = /^http(?:s?)/;
+window.addEventListener ? window.addEventListener("message", w, !1) : window.attachEvent("onmessage", w), n.exports = O = function(n, t, e) {
+    if (r(n) && (n = document.getElementById(n)), !i(n)) throw new Error("SC.Widget function should be given either iframe element or a string specifying id attribute of iframe element.");
+    t && (e = e || {}, n.src = R(k, t, e));
+    var o, a, s = h(c(n));
+    return s && s.instance ? s.instance : (o = T.indexOf(c(n)) > -1, a = new _(n), I.push(new y(a, n, o)), a)
+}, O.Events = L, window.SC = window.SC || {}, window.SC.Widget = O, y = function(n, t, e) {
+    this.instance = n, this.element = t, this.domain = u(t.getAttribute("src")), this.isReady = !!e, this.callbacks = {}
+}, _ = function() {}, _.prototype = {
+    constructor: _,
+    load: function(n, t) {
+        if (n) {
+            t = t || {};
             var e = this,
-                r = p(this);
-            return r && r.element && (n === L.READY && r.isReady ? setTimeout(t, 1) : r.isReady ? (d(n, t, r), f(N.ADD_LISTENER, n, r.element)) : d(C, function() {
-                e.bind(n, t)
-            }, r)), this
-        },
-        unbind: function(n) {
-            var t, e = p(this);
-            e && e.element && (t = E(n, e), n !== L.READY && t && f(N.REMOVE_LISTENER, n, e.element))
+            r = p(this),
+            o = r.element,
+            i = o.src,
+            a = i.substr(0, i.indexOf("?"));
+            r.isReady = !1, r.playEventFired = !1, o.onload = function() {
+                e.bind(L.READY, function() {
+                    var n, e = r.callbacks;
+                    for (n in e) e.hasOwnProperty(n) && n !== L.READY && f(N.ADD_LISTENER, n, r.element);
+                        t.callback && t.callback()
+                })
+            }, o.src = R(a, n, t)
         }
-    }, S(_.prototype, l(b)), S(_.prototype, l(P), !0)
+    },
+    bind: function(n, t) {
+        var e = this,
+        r = p(this);
+        return r && r.element && (n === L.READY && r.isReady ? setTimeout(t, 1) : r.isReady ? (d(n, t, r), f(N.ADD_LISTENER, n, r.element)) : d(C, function() {
+            e.bind(n, t)
+        }, r)), this
+    },
+    unbind: function(n) {
+        var t, e = p(this);
+        e && e.element && (t = E(n, e), n !== L.READY && t && f(N.REMOVE_LISTENER, n, e.element))
+    }
+}, S(_.prototype, l(b)), S(_.prototype, l(P), !0)
 }, function(n, t) {
     t.api = {
         LOAD_PROGRESS: "loadProgress",
