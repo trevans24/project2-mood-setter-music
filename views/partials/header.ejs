@@ -43,7 +43,7 @@
   </nav>
 
   <!-- form for adding playlists -->
-  <form>
+  <form class="col-md-3 col-md-offset-1">
     <!-- grouping related fields of a form -->
     <fieldset>
       <!-- defining the captioin for the form -->
@@ -63,6 +63,28 @@
       </div>
     </fieldset>
   </form>
+
+    <!-- desciption of how to use -->
+  <div class="description col-md-3">
+    <p>
+      Welcome to Mood Setter Music! A playlist application 
+      to set the mood to whatever you are doing! Sign In
+      to start using. Add a playlist in the form, 
+      press on the bubble to load from Sound Cloud.
+      You can also edit the name of the playlist, or
+      you can remove it with the 'POP' button.
+    </p>
+  </div>
+
+  <!-- for use in playlist search and add -->
+    <!-- <section> -->
+      <!-- <aside> -->
+      <iframe class="col-md-3" id="test" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/317619385&amp;auto_play=true&amp;hide_related=false&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;visual=true"></iframe>
+      <!-- </aside> -->
+      <!-- playlist section -->
+      <div id="playlists" class="row playlist" attr="playlist._id">
+      </div>
+    <!-- </section> -->
 
 
   <!-- modal for editing playlists -->

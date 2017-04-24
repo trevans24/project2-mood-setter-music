@@ -26,6 +26,27 @@ nav {
 	font-family: 'Raleway', sans-serif;
 }
 
+/*widget*/
+iframe {
+	padding: 0px;
+	float: right;
+	width: 300px;
+	height: 200px;
+	/*background-color: rgba(255,255,255,.7);*/
+	margin: 0 15px 10px 0;
+}
+
+/*description*/
+.description {
+	padding: 10px;
+	font-size: 16px;
+	float: right;
+	width: 300px;
+	height: 200px;
+	background-color: rgba(255,255,255,.8);
+	margin: 0 15px 10px 0;
+}
+
 /*section*/
 section {
 	margin: 15px;
@@ -45,7 +66,7 @@ form {
 	float: right;
 	width: 300px;
 	height: 200px;
-	background-color: rgba(255,255,255,.5);
+	background-color: rgba(255,255,255,.7);
 	margin: 0 15px 10px 0;
 }
 
