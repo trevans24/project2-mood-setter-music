@@ -1,12 +1,9 @@
-<!-- use header -->
-<% include ./partials/header.ejs %>
 <% if (message.length > 0) {%>
 <div class="alert alert-danger"><%= message%></div>
 <% } %>
 
 <!-- login form -->
 <h2>Login</h2>
-
 <!-- email label and textfield -->
 <form method="post" action="/login">
   <div class="form-group">

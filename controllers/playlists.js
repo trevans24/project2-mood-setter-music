@@ -1,4 +1,4 @@
-//JSON API Endpoints
+// JSON API Endpoints
 var db = require('../models');
 
 //get for all playlists in DB
@@ -7,8 +7,8 @@ function playlistIndex(req, res){
 		if (err){
 			console.log(err);
 		}
-		// console.log(req);
-		// console.log(res);
+		console.log(req);
+		console.log(res);
 		res.json(playlists);
 	});
 }

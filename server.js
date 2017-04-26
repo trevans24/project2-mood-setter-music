@@ -8,7 +8,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
-// var request		 = require('request');
+var db			 = require('./models');
 
 //use express for morgan, cookie parser, and body parser
 app.use(morgan('dev')); 
@@ -58,12 +58,12 @@ app.get('/api', function api_index(req, res){
 		endpoints: [
 		{
 			method: 'GET', 
-			path: '/playlists', 
+			path: '/api/playlists', 
 			description: "show your playlist and homepage"
 		},
 		{
 			method: 'POST',
-			path: '/playlists',
+			path: '/api/playlists',
 			description: "Add a new playlist"
 		},
 		{
@@ -73,12 +73,12 @@ app.get('/api', function api_index(req, res){
 		},
 		{
 			method: 'PUT',
-			path: '/playlists/:id',
+			path: '/api/playlists/:id',
 			description: "Update your playlist"
 		},
 		{
 			method: 'DELETE',
-			path: '/playlists/:id',
+			path: '/api/playlists/:id',
 			description: 'Delete your playlist'
 		}
 		]
