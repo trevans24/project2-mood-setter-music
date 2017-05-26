@@ -9,7 +9,7 @@ function getSignup(request, response, next) {
 // POST //new user signup
 function postSignup(request, response, next) {
 	var signupStrategy = passport.authenticate('local-signup', {
-		successRedirect: '/login',
+		successRedirect: '/playlists',
 		failureRedirect: '/signup',
 		failureFlash: true
 	});
